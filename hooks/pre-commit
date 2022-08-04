@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+echo PHP_EOL."Running PHPUnit tests...".PHP_EOL;
+
+exec('docker exec -t project_name-php-1 bash -c "/project_name/vendor/bin/phpunit /project_name/tests"', $output, $returnCode);
+
+echo PHP_EOL . implode(PHP_EOL, $output) . PHP_EOL;
+
+if ($returnCode !== 0) {
+    echo "Aborting commit because tests did not pass..." . PHP_EOL;
+    exit(1);
+}
+
+exit(0);

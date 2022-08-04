@@ -1,0 +1,10 @@
+services:
+
+  php:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    working_dir: /project_name
+    volumes:
+      - ./:/project_name
+      - ./vendor:/project_name/vendor/
